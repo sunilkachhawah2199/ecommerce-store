@@ -36,6 +36,9 @@ public class SecurityConfiguration {
         http.csrf(csrf -> csrf.disable()) // Disable CSRF protection
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll() // Allow unauthenticated access to /auth/**
+                        .requestMatchers("/swagger-ui/**").permitAll() // Allow unauthenticated access to /swagger-ui/**
+                        .requestMatchers("/v3/api-docs/**").permitAll() // Allow unauthenticated access to /v3/api-docs/**
+                        .requestMatchers("/swagger-resources/**").permitAll() // Allow unauthenticated access to /swagger-resources/**
                         .anyRequest().authenticated()) // Require authentication for any other request
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Use stateless session management

@@ -2,6 +2,7 @@ package com.ecommerce.configuration;
 
 
 import com.ecommerce.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -33,6 +34,11 @@ public class ApplicationConfiguration {
         return new RestTemplate();
     }
 
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 
 
     // Bean to provide UserDetailsService implementation

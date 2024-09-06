@@ -3,6 +3,14 @@
 
 The E-commerce Backend System is a robust and scalable backend solution designed to support the core functionalities of an online shopping platform. This system provides a comprehensive API that handles user authentication, product management, and secure access to resources, making it ideal for e-commerce applications.
 
+## documentation
+
+```bash
+  http://localhost:8080/swagger-ui/index.html
+```
+## Screenshots
+![screenshot](Screenshot 2024-09-06 165121.png)
+
 
 
 ## Features
