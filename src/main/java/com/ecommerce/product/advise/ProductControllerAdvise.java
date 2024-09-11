@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.time.LocalDateTime;
 
 @ControllerAdvice // this annotation is used to handle exceptions globally
-public class ControllerAdvise {
+public class ProductControllerAdvise {
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorDto>  handleProductNotFoundException(ProductNotFoundException e){
         ErrorDto errorDto=new ErrorDto();

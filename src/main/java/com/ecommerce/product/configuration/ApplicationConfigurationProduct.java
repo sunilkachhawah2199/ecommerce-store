@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
   * so we can use this configuration bean to create object once and use it anywhere in the project
   * */
 @Configuration
-public class ApplicationConfiguration {
+public class ApplicationConfigurationProduct {
 
     // create object of rest template and use it anywhere in the project by dependency injection
     @Bean

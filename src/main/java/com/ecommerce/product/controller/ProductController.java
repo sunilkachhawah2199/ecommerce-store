@@ -69,7 +69,7 @@ public class ProductController {
     // create product
     @PostMapping("/")
     // create new cache with key as product id
-//    @CachePut(value = "product", key = "#result.id")
+    @CachePut(value = "product", key = "#result.id")
     public ResponseEntity<ResponseProductDto> createProduct(@RequestBody RequestProductDto requestProductDto){
         Product product=productMapper.mapProductRequestToProduct(requestProductDto);
         Product createdProduct=productService.createProduct(product);
