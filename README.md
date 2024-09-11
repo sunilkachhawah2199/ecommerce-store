@@ -1,42 +1,81 @@
+# E-commerce Store Backend API
 
-# Ecommerce Store
-
-The E-commerce Backend System is a robust and scalable backend solution designed to support the core functionalities of an online shopping platform. This system provides a comprehensive API that handles user authentication, product management, and secure access to resources, making it ideal for e-commerce applications.
-
+This project is a scalable backend API for an e-commerce store, developed using Java and Spring Boot. It includes services for managing products and shopping carts, optimized with Redis caching for improved performance and faster response times. The API follows RESTful principles and is designed with a focus on maintainability, scalability, and security using industry best practices such as SOLID and Object-Oriented Programming (OOP) principles.
 ## documentation
 
 ```bash
   http://localhost:8080/swagger-ui/index.html
 ```
-## Screenshots
-![screenshot](Screenshot 2024-09-06 165121.png)
+## Key Features
 
+### Product Management Service
+- Allows CRUD operations on products, enabling the creation, updating, and deletion of product details.
+- Supports advanced querying capabilities such as listing products by category and retrieving all available product categories.
+- Provides endpoints to handle bulk product additions, which is useful for managing large inventories efficiently.
 
+### Cart Management Service
+- Facilitates the creation and management of shopping carts for users.
+- Supports adding items to the cart, updating quantities, and removing items as needed.
+- Provides functionality for viewing cart contents, either for a specific user or across all users, enhancing the shopping experience.
 
-## Features
-1. User Authentication and Authorization:
-- Users can sign up and log in using their credentials.
-- The system employs JWT (JSON Web Token) for secure authentication, ensuring that only authorized users can access protected resources.
-- JWT tokens are issued upon successful login and are used for validating user sessions across various microservices.
+### Performance Optimization with Redis
+- Integrated Redis caching to reduce database load and optimize response times, significantly improving performance from 30ms to 2ms.
+- The caching layer helps to store frequently accessed data, such as product details and cart information, which minimizes the number of direct database calls.
 
-2. Product Management:
-- Add Product: Authenticated users can add new products to the catalog with details such as name, description, price, and availability.
-- Update Product: Users can update existing product details, allowing for dynamic changes in the product offerings.
-- Delete Product: The system allows authorized users to remove products from the catalog, maintaining the integrity and relevancy of the inventory.
-- View Products: Users can retrieve a list of products with full details, making it easy to browse through the available items.
+### Security and Authentication
+- The API is secured using JWT for authentication and Spring Security for authorization, ensuring that all endpoints are protected and accessible only to authenticated users with the appropriate permissions.
 
-3. Security Implementation:
-- Security is a core component of the system, with JWT tokens providing a robust layer of authentication and authorization.
-- JWT-based security ensures that all transactions and data exchanges between clients and microservices are secure and tamper-proof.
+### Scalable Architecture
+- Built on a robust and scalable architecture using Spring Boot and the MVC pattern, allowing for easy maintenance and future enhancements.
+- Utilizes best practices in software development, including SOLID principles, to ensure clean, manageable, and testable code.
 
-## Technology Stack
-- Spring Boot: For building robust and scalable microservices.
-- Spring Security: To implement security features such as JWT-based authentication.
-- Java: As the core programming language for business logic implementation.
-- MySQL Database: For persistent storage of user and product data.
-- RESTful APIs: For communication between clients and services, supporting CRUD operations for product management.
+### Build and Dependency Management
+- Utilized Maven for managing project dependencies and build automation, ensuring smooth integration and continuous delivery processes.
 
-## Future Improvements
-- Microservices Architecture Enhancement: User Authentication as a Centralized Service: The authentication and authorization functionalities will be separated into a dedicated Auth Service using Spring Cloud, allowing it to be used across all microservices within the system. This will enable a more cohesive security architecture, facilitate easier scaling of authentication processes, and reduce redundancy in handling security concerns across different services.
-- Caching Mechanism: Redis Integration for Caching: To optimize response times and reduce the load on the database, Redis will be implemented as an in-memory caching solution. This will help cache frequently accessed data, such as product details and user sessions, thereby decreasing database queries and enhancing overall system performance.
-- API Gateway: Centralized API Management: An API Gateway (e.g., Spring Cloud Gateway or Netflix Zuul) will be integrated to handle routing, load balancing, rate limiting, and centralized authentication/authorization. This will streamline requests to the appropriate microservices, manage traffic efficiently, and provide a single entry point to the backend system, enhancing both security and scalability.
+## API Endpoints
+
+### Product Controller
+- **GET /api/products/{id}**: Retrieve a specific product by its ID.
+- **PUT /api/products/{id}**: Update an existing product by its ID.
+- **DELETE /api/products/{id}**: Delete a product by its ID.
+- **POST /api/products/list**: Add a list of products in bulk.
+- **GET /api/products/**: Retrieve all products.
+- **POST /api/products/**: Add a new product.
+- **GET /api/products/category/{category}**: Retrieve products by category.
+- **GET /api/products/categories**: Retrieve a list of all product categories.
+
+### Cart Controller
+- **PUT /api/cart/{cart_id}/update/{item_id}**: Update the quantity of a specific item in the cart.
+- **POST /api/cart/{user_id}**: Create a new cart for a user.
+- **POST /api/cart/{cart_id}/add**: Add items to the cart by cart ID.
+- **GET /api/cart/{cart_id}**: Retrieve a specific cart by cart ID.
+- **GET /api/cart/**: Retrieve all carts.
+- **DELETE /api/cart/{cart_id}/remove/{item_id}**: Remove a specific item from the cart.
+
+## Technologies Used
+- **Java 11**: The programming language used for developing the backend.
+- **Spring Boot**: Framework for building the API, providing ease of setup, development, and deployment.
+- **Spring Data JPA**: For database interaction and data persistence.
+- **Spring Security and JWT**: For authentication and securing API endpoints.
+- **Redis**: Used as a caching layer to optimize performance and reduce database calls.
+- **Maven**: For project build and dependency management.
+- **MongoDB or SQL Database**: For storing product and cart data.
+
+## How to Run
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/ecommerce-backend.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+    cd ecommerce-backend
+    ```
+3. Run the application using Maven:
+    ```bash
+    mvn spring-boot:run
+    ```
+4. Access the API documentation at:
+    ```bash
+     http://localhost:8080/swagger-ui/index.html
+   ```
